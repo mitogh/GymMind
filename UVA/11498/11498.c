@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-    
+
     while(1){
         int nCases = 0; 
         scanf("%d", &nCases);
