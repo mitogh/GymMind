@@ -1,74 +1,21 @@
-<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<!-- saved from url=(0050)http://uva.onlinejudge.org/external/114/11498.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Division of Nlogonia</title>
-</head>
-<body lang="EN" bgcolor="#FFFFFF">
- <h1><br clear="ALL"><center><table bgcolor="#0060F0"><tbody><tr><td><b><font size="5" color="#C0FFFF">&nbsp;Division of Nlogonia</font>&nbsp;</b></td></tr></tbody></table></center></h1>
-<p>
+#Division of Nlogonia #11498
 
-</p><h2><font color="#0070E8">The Problem</font></h2>
+###The Problem
 
-<p>
-After centuries of hostilities and skirmishes between the four nations
-living in the land generally known as Nlogonia, and years of
-negotiations involving diplomats, politicians and the armed forces of
-all interested parties, with mediation by UN, NATO, G7 and
-SBC, it was at last agreed by all the way to end the dispute, dividing
-the land into four independent territories.
+After centuries of hostilities and skirmishes between the four nations living in the land generally known as Nlogonia, and years of negotiations involving diplomats, politicians and the armed forces of all interested parties, with mediation by UN, NATO, G7 and SBC, it was at last agreed by all the way to end the dispute, dividing the land into four independent territories.
 
-<!--
-Depois de séculos de escaramuças entre os quatro povos habitantes da
-Nlogônia, e de dezenas de anos de negociações envolvendo diplomatas,
-políticos e as forças armadas de todas as partes interessadas, com a
-intermediação da ONU, OTAN, G7 e SBC, foi finalmente decidida e aceita
-por todos a maneira de dividir o país em quatro territórios
-independentes.
--->
-
-</p><p>
-It was agreed that one point, called <i>division point</i>, with
-coordinates established in the negotiations, would define the country
-division, in the following way. Two lines, both containing the division point,
-one in the North-South direction and one in the East-West direction, would
-be drawn on the map, dividing the land into four new countries. Starting
-from the Western-most, Northern-most quadrant, in clockwise direction, the new
+It was agreed that one point, called <i>division point</i>, with coordinates established in the negotiations, would define the country division, in the following way. Two lines, both containing the division point, one in the North-South direction and one in the East-West direction, would be drawn on the map, dividing the land into four new countries. Starting from the Western-most, Northern-most quadrant, in clockwise direction, the new
 countries will be called Northwestern Nlogonia, Northeastern Nlogonia,
 Southeastern Nlogonia and Southwestern Nlogonia.
 
-</p><center>
-<img src="./Division of Nlogonia_files/p11498.png">
-</center>
+![](img/p11498.png)
 
-<!--
-Ficou decidido que um ponto, denominado \emph{ponto divisor}, cujas
-coordenadas foram estabeledicas nas negociações, definiria a divisão
-do país, da seguinte maneira. Duas linhas, ambas contendo o ponto
-divisor, uma na direção Norte-Sul e uma na direção Leste-Oeste, seriam
-traçadas no mapa, dividindo o país em quatro novos países. Iniciando
-no quadrante mais ao norte e mais ao oeste, em sentido horário, os
-novos países seriam chamados de Nlogônia do Noroeste, Nlogônia do
-Nordeste, Nlogônia do Sudeste e Nlogônia do Sudoeste.
-
-\begin{center}
-\epsfig{file=nlog.eps}
-\end{center}
--->
-
-<p>
 The UN determined that a page in the Internet should exist so that
 the inhabitants could check in which of the countries their homes are. You
 have been hired to help implementing the system.
 
-<!--
-A ONU determinou que fosse disponibilizada uma página na Internet para
-que os habitantes pudessem consultar em qual dos novos países suas
-residências estão, e você foi contratado para ajudar a implementar o sistema.
--->
+###The Input
 
-</p><h2><font color="#0070E8">The Input</font></h2>
-
-<p>
 The input contains several test cases. The first line of a test case
 contains one integer <i>K</i> indicating the number of queries that
 will be made (<i>0 &lt; K &#8804; 10<sup>3</sup></i>). The second line of a
@@ -79,79 +26,31 @@ the <i>K</i> following lines contains two integers <i>X</i>
 and <i>Y</i> representing the coordinates of a residence
 (<i>-10<sup>4</sup> &#8804; X, Y &#8804; 10<sup>4</sup></i>).
 
-</p><p>
-<!--A line containing only the number zero indicates the end of input.-->
 The end of input is indicated by a line containing only the number zero.
 
+###The Output
 
-<!--
-A entrada contém vários casos de teste.  A primeira
-linha de um caso de teste contém um inteiro <i>K<i> indicando o número de
-consultas que serão realizadas (<i>0 < K \leq 10<sup></sup>3<i>).
-A segunda linha de um caso
-de teste contém dois números inteiros <i>N<i> e <i>M<i> representando as
-coordenadas do ponto divisor (<i>-10<sup></sup>4 < N,M < 10<sup></sup>4<i>, <i>N \neq 0<i> e <i>M \neq 0<i>).
-Cada uma das <i>K<i>
-linhas seguintes contém dois inteiros <i>X<i> e <i>Y<i> representando as
-coordenadas de uma residência (<i>-10<sup></sup>4 \leq N,M \leq 10<sup></sup>4<i>).
-O final da entrada é indicado por uma linha que contém apenas o
-número zero.
--->
-
-
-</p><h2><font color="#0070E8">The Output</font></h2>
-
-<p>
 For each test case in the input your program must print one line containing:
 
-</p><ul>
-<li> the word <font face="courier">divisa</font> (means border in
-Portuguese) if the residence is on one of the border lines
-(North-South or East-West);
-</li><li> <font face="courier">NO</font> (means NW in Portuguese) if the residence is in Northwestern Nlogonia;
-</li><li> <font face="courier">NE</font> if the residence is in Northeastern Nlogonia;
-</li><li> <font face="courier">SE</font> if the residence is in Southeastern Nlogonia;
-</li><li> <font face="courier">SO</font> (means SW in Portuguese) if the residence is in Southwestern Nlogonia.
-</li></ul>
-
-<!--
-Para cada caso de teste da entrada seu programa deve imprimir uma linha contendo:
-\begin{itemize}
-\item a palavra \texttt{divisa} se a residência encontra-se em cima de uma das linhas divisórias 
-(Norte-Sul ou Leste-Oeste);
-\item \texttt{NO} se a residência encontra-se na Nlogônia do Noroeste;
-\item \texttt{NE} se a residência encontra-se na Nlogônia do Nordeste;
-\item \texttt{SE} se a residência encontra-se na Nlogônia do Sudeste;
-\item \texttt{SO} se a residência encontra-se na Nlogônia do Sudoeste.
-\end{itemize}
--->
-
-<h2><font color="#0070E8">Sample Input</font></h2>
-<p>
-</p><pre>3
-2 1
-10 10
--10 1
-0 33
-4
--1000 -1000
--1000 -1000
-0 0
--2000 -10000
--999 -1001
-0
-</pre>
-<p>
-</p><h2><font color="#0070E8">Sample Output</font></h2>
-<p>
-</p><pre>NE
-divisa
-NO
-divisa
-NE
-SO
-SE
-</pre>
+- the word divisa (means border in Portuguese) if the residence is on one of the border lines (North-South or East-West);
+- NO (means NW in Portuguese) if the residence is in Northwestern Nlogonia;
+- NE</font> if the residence is in Northeastern Nlogonia;
+- SE</font> if the residence is in Southeastern Nlogonia;
+- SO (means SW in Portuguese) if the residence is in Southwestern Nlogonia.
 
 
-</body></html>
+
+	Sample Input	Sample Output
+	------------------------------
+	3
+	2 1
+	10 10			NE
+	-10 1			divisa
+	0 33			NO
+	4
+	-1000 -1000
+	-1000 -1000		divisa
+	0 0				NE
+	-2000 -10000	SO
+	-999 -1001		SE
+	0
