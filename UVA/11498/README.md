@@ -39,7 +39,7 @@ For each test case in the input your program must print one line containing:
 - SO (means SW in Portuguese) if the residence is in Southwestern Nlogonia.
 
 
-
+#Example
 	Sample Input	Sample Output
 	------------------------------
 	3

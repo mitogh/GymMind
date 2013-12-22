@@ -14,19 +14,15 @@ The input contains two integer numbers in every line. These two numbers in each 
 For each line of input, print the difference of number of soldiers between Hashmat's army and his opponent's army. Each output should be in seperate line.
  
 ###Sample Input:
-10 128
-
-10 14
-
-100 200
+	10 128
+	10 14
+	100 200
 
  
 ###Sample Output:
-2
-
-4
-
-100
+	2
+	4
+	100
 
 *Shahriar Manzoor*
 
