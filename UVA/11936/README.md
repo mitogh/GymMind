@@ -6,15 +6,15 @@ After a lot of discussions the foreman and the lumberjacks came to an agreement:
 
 Since our lumberjacks are as cunning as they are lazy, they convince the foreman to let them determine the surface and the site in the forest were they will work. As a result, the lumberjacks keep passing the foreman sets of numbers that could not form the sides of a triangle. After a while, the foreman began to suspect and decide to write a program that validates the input of each lumberjack. Now when the lumberjacks decide to pass wrong numbers they get a fine of $1000.00 (more than a day's salary).
 
-Your job is to write the program that the foreman has to use to determine if the numbers (all integers) passed by the lumberjacks can be the sides of a triangle. If they can, you have to print \``OK" else you have to print ``Wrong!!"
+Your job is to write the program that the foreman has to use to determine if the numbers (all integers) passed by the lumberjacks can be the sides of a triangle. If they can, you have to print \`\`OK" else you have to print ``Wrong!!"
 
 ##Input 
 
-The input consist in a data set describing the numbers of that each lumberjack has passed to the foreman for the day: The data is formatted as follows: The first line is an integer N ( 2$ \le$N$ \le$20). Then follows N lines, each one containing three integers separated by a space.
+The input consist in a data set describing the numbers of that each lumberjack has passed to the foreman for the day: The data is formatted as follows: The first line is an integer *N* ( 2 <= *N* <= 20). Then follows *N* lines, each one containing three integers separated by a space.
 
 ##Output 
 
-For each line in the input you have to find if the integers can represent the sides of a triangle. If they can you have to print \``OK" for each line in the input, else you have to print ``Wrong!!"
+For each line in the input you have to find if the integers can represent the sides of a triangle. If they can you have to print \`\`OK" for each line in the input, else you have to print ``Wrong!!"
 
 ##Sample Input 
 
