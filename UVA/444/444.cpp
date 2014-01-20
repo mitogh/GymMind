@@ -1,62 +1,75 @@
 #include <stdio.h>
-#include <iostream>
 #include <string>
+#include <iostream>
 
-using namespace std; 
+using namespace std;
 
 int main(){
-    
-    string line; 
+    string line;
 
     while(getline(cin, line)){
-
-        int i = line.size() - 1;
-        char decode[81];
-        int j, k, n; 
-        j = 0; 
-        k = 0; 
-        n = 0;
+        int length = 0;
+        char decode[82];
+        int j, f;
+        length = line.size() - 1;
 
         if(line[0] >= '0' && line[0] <= '9'){
-            while(i >= 0){
-                decode[j++] = line[i--];
+            j = 0;
+            int b = 10;
+            int n = 0;
+            f = 0;
+
+            while(length >= 0){
+                decode[j] = line[length];
+                j++;
+                length--;
             }
             decode[j] = '\0';
-
+            
             j = 0;
             while(decode[j] != '\0'){
-                n = 0;
-                if(decode[j] == '1'){
+                if(!n && decode[j] == '1'){
                     n = 100;
-                    j++;
-                }
-
-                n += (decode[j] - 48) * 10;
-                n += decode[j+1] - 48;
-                j += 2;
-                
-                printf("%c", n);
-            }
-        }else{
-            while(line[j] != '\0'){
-                if(line[j] >= 100){
-                    decode[k++] = (line[j] / 100) + 48; 
-                    decode[k++] = ((line[j] - 100) / 10) + 48;
-                    decode[k++] = (line[j] % 10) + 48;
                 }else{
-                    decode[k++] = (line[j] / 10) + 48;
-                    decode[k++] = (line[j] % 10) + 48;
+                    n += (decode[j] - 48) * b;
+                    b = (b == 10) ? 1 : 10;
+                    f++;
+                }
+                if(f >= 2){
+                    printf("%c", n);
+                    f = 0; 
+                    n = 0;
                 }
                 j++;
             }
-            decode[k--] = '\0';
-
-            while( k >= 0 ){
-                printf("%c", decode[k--]);
+        }else{
+            j = 0;
+            f = 0;
+            while(line[j] != '\0'){
+                if(line[j] >= 100){
+                    decode[f] = (line[j] / 100) + 48;
+                    f++;
+                    decode[f] = ((line[j] - 100) / 10) + 48;
+                    f++;
+                    decode[f] = (line[j] % 10) + 48;
+                    f++;
+                }else{
+                    decode[f] = (line[j] / 10) + 48;
+                    f++;
+                    decode[f] = (line[j] % 10) + 48;
+                    f++;
+                }
+                j++;
+            }
+            decode[f] = '\0';
+            
+            while( f >= 0 ){
+                printf("%c", decode[f]);
+                f--;
             }
         }
         printf("\n");
+        memset(decode, 0, sizeof(decode));
     }
-
     return 0;
 }
