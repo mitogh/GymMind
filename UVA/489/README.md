@@ -35,9 +35,9 @@ Output
 
 The output of your program is to indicate which round of the game the contestant is currently playing as well as the result of the game. There are three possible results:
 
-``You win.``
-``You lose.``
-``You chickened out.``
+``You win.``  
+``You lose.``  
+``You chickened out.``  
 
 Sample Input
 ------------
