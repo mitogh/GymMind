@@ -1,5 +1,5 @@
 Hangman Judge 
-============="
+=============
 
 In "Hangman Judge" you are to write a program that judges a series of Hangman games. For each game, the answer to the puzzle is given as well as the guesses. Rules are the same as the classic game of hangman, and are given as follows:
 
