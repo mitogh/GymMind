@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main(){
-    short n, m;
+    int n, m;
     int c = 1;
-    while(scanf("%hd %hd\n", &n, &m) == 2 && n && m){
+    while(scanf("%d %d\n", &n, &m) == 2 && n && m){
         char matrix[101][101];
         short i, j;
         if(c > 1) printf("\n");
@@ -19,14 +19,17 @@ int main(){
                     printf("*");
                     continue;
                 }
-                if(j + 1 != m && matrix[i][j + 1] == '*') count++;
+                if(j + 1 < m && matrix[i][j + 1] == '*') count++;
                 if(j - 1 >= 0 && matrix[i][j - 1] == '*') count++;
-                if(i + 1 != n && matrix[i + 1][j] == '*') count++;
+
+                if(i + 1 < n && matrix[i + 1][j] == '*') count++;
                 if(i - 1 >= 0 && matrix[i - 1][j] == '*') count++;
-                if(j + 1 != m && i - 1 >= 0 && matrix[i - 1][j + 1] == '*') count++;
+
+                if(j + 1 < m && i - 1 >= 0 && matrix[i - 1][j + 1] == '*') count++;
                 if(j - 1 >= 0 && i - 1 >= 0 && matrix[i - 1][j - 1] == '*') count++;
-                if(j + 1 != m && i + 1 >= 0 && matrix[i + 1][j + 1] == '*') count++;
-                if(j - 1 >= 0 && i + 1 >= 0 && matrix[i + 1][j - 1] == '*') count++;
+
+                if(j + 1 < m && i + 1 < n && matrix[i + 1][j + 1] == '*') count++;
+                if(j - 1 >= 0 && i + 1 < n && matrix[i + 1][j - 1] == '*') count++;
 
                 printf("%d", count);
             }
