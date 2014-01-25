@@ -8,21 +8,24 @@ int main(){
     while(getline(cin, line) || !line.empty()){
         int n = 0;
         printf("Case %d:\n", c++);
+        int count[1000001] = {0};
+        int i = 0;
+        int j = i;
+        count[i] = j;
+        char c = line[i++];
+        while(line[i] != '\0'){
+            if(line[i] != c){
+                c = line[i];
+                j++;
+            }
+            count[i] = j;
+            i++;
+        }
+
         for(scanf("%d\n", &n); n > 0; n--){
             int a, b, min;
             scanf("%d %d\n", &a, &b);
-            if(b < a){
-                min = b;
-                b = a;
-                a = min;
-            }
-            int i;
-            for(i = a; i <= b; i++){
-                if(line[i] != line[a]) break;
-            }
-
-            if((i-1) == b) printf("Yes\n");
-            else printf("No\n");
+            printf("%s\n", (count[a] == count[b]) ? "Yes" : "No");
         }
     }
     return 0;
