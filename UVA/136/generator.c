@@ -14,7 +14,7 @@ unsigned long isUgly(unsigned long n){
 int main() {
     unsigned long i = 0;
     int c = 0;
-    for(i = 1; c < 1500; i++) if(!isUgly(i)) c++; 
+    for(i = 1; c <= 1500; i++) if(!isUgly(i)) c++; 
 
     printf("%lu", i);
     return 0;
