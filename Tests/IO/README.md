@@ -1,13 +1,15 @@
 Test Input
 ==========
 
-- **Input file**: INPUT.md
+This test is only made for reading, not include nothing else like print or something like that.
+
+- **Input file**: INPUT.txt
 - **Size**: 15.5 MB
 
 Execution
 ---------
 ```
-$gcc getchar.c -o getchar.out && ./getchar.out < INPUT.md
+$gcc getchar.c -o getchar.out && ./getchar.out < INPUT.txt
 ```
 
 Results (only reading): char by char
