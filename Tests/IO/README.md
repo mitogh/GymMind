@@ -13,32 +13,26 @@ Execution
 $gcc getchar.c -o getchar.out && ./getchar.out < INPUT.txt
 ```
 
+**Note**: The result is an avarage of 6 execution times of the same function.
+
 Results (only reading): char by char
 -----------------------------
 
 	Program 	|	Function	| 	Times
 	-------------------------------------------------
-	getchar.c		getchar()		1.649957, 1.626656,
-									1.644488, 1.644473
-									1.660783, 1.665575
+	getchar.c		getchar()		1.648655333
 	-------------------------------------------------
-	getc.c			getc(stdin)		1.583306, 1.605868
-									1.603475, 1.581651
-									1.592054, 1.595314
+	getc.c			getc(stdin)		1.593611333
 									
 Results (only reading): line by line
 -----------------------------
 
 	Program 	|	Function	| 	Times
 	-------------------------------------------------
-	scanf.c		scanf()				0.154413	0.153253
-									0.170668	0.157757
+	scanf.c			scanf()			0.157692
 	-------------------------------------------------
-	getc.c			getc(stdin)		1.583306, 1.605868
-									1.603475, 1.581651
-									1.592054, 1.595314
+	fgets.c			fgets()			0.081063833
 									
-	
 	
 Tested machine
 --------------
