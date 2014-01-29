@@ -32,7 +32,10 @@ Results (only reading): line by line
 	scanf.c			scanf()			0.157692
 	-------------------------------------------------
 	fgets.c			fgets()			0.081063833
+	-------------------------------------------------
+	getline.cpp		fgetline()		2.759894667
 									
+
 	
 Tested machine
 --------------

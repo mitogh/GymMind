@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <iostream>
 #include <time.h>
 
+using namespace std;
 int main(){
     // Character to read; 
-    char buffer[1024];
+    string buffer;
     clock_t start = clock();
     
-    while(scanf("%s", buffer) == 1);
+    while(getline(cin, buffer)); 
 
     printf("Time: %f", (clock() - start) / (double)CLOCKS_PER_SEC);
 
