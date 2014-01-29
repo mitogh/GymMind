@@ -15,7 +15,7 @@ $gcc getchar.c -o getchar.out && ./getchar.out < INPUT.txt
 
 **Note**: The result is an avarage of 6 execution times of the same function.
 
-Results (only reading): char by char
+Results: char by char
 -----------------------------
 
 	Program 	|	Function	| 	Times
@@ -24,7 +24,7 @@ Results (only reading): char by char
 	-------------------------------------------------
 	getc.c			getc(stdin)		1.593611333
 									
-Results (only reading): line by line
+Results: line by line
 -----------------------------
 
 	Program 	|	Function	| 	Times
