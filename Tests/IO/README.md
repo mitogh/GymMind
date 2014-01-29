@@ -33,7 +33,7 @@ Results (only reading): line by line
 	-------------------------------------------------
 	fgets.c			fgets()			0.081063833
 	-------------------------------------------------
-	getline.cpp		fgetline()		2.759894667
+	getline.cpp		getline()		2.759894667
 									
 
 	
