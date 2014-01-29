@@ -46,9 +46,9 @@ string sum(string a, string b){
 }
 
 int main(){
-    int n, i, k;
-
-    while(scanf("%d", &n) == 1){
+    int i, k,n;
+    
+    for(n = 1; n <= 5000; n++){
         string n1 = "0";
         string n2 = "1";
         for(k = 0; k < n; k++){
@@ -57,7 +57,7 @@ int main(){
             n1 = tmp;
         }
         i = 0;
-        printf("The Fibonacci number for %d is ", n);
+        printf("fibo[%d] =  ", n);
         while(n1[i] != '\0') printf("%c", n1[i++]);
         printf("\n");
     }
