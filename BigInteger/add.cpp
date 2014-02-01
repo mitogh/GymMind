@@ -11,14 +11,13 @@ string add(string a, string b){
     string total = "";
 
     int sum = 0;
-    while(len_a >= 0 || len_b >= 0){
+    while(len_a >= 0 || len_b >= 0 || sum){
         if(len_b >= 0)  sum += (int)b[len_b--] - '0';
         if(len_a >= 0)  sum += (int)a[len_a--] - '0';
 
         total.insert(total.begin(), (sum % 10) + '0');
         sum /= 10;
     }
-    if(sum) total.insert(total.begin(), sum + '0');
     return total;
 }
 
