@@ -1,9 +1,7 @@
-#include <stdio.h>
+#include <string.h>
 #include <iostream>
-#include <string>
 
 using namespace std;
-
 string sum(string a, string b){
     int len_a = a.size();
     int len_b = b.size();
@@ -25,8 +23,8 @@ string sum(string a, string b){
     tmp[j--] = '\0';
     len_a--;
     len_b--;
-    
-    short carry = 0;
+
+    int carry = 0;
     while(len_a >= 0){
         int sum = 0;
         sum += (int)a[len_a--] - 48;
@@ -45,22 +43,23 @@ string sum(string a, string b){
     else return tmp;
 }
 
-int main(){
-    int i, k,n;
-    
-    for(n = 1; n <= 5000; n++){
-        string n1 = "0";
-        string n2 = "1";
-        for(k = 0; k < n; k++){
-            string tmp = sum(n1, n2);
-            n2 = n1;
-            n1 = tmp;
-        }
-        i = 0;
-        printf("fibo[%d] =  ", n);
-        while(n1[i] != '\0') printf("%c", n1[i++]);
-        printf("\n");
+string fibo[5001];
+
+string fib(int n){
+    if(fibo[n].size() > 0) return fibo[n];
+    else {
+        string tmp = sum(fib(n - 1), fib(n - 2));
+        fibo[n] = tmp;
+        return tmp;
     }
+}
+
+int main(){
+    int n;
+    fibo[0] = "0"; 
+    fibo[1] = "1";
+
+    while(scanf("%d", &n) == 1) cout << "The Fibonacci number for " << n << " is " << fib(n) << "\n";
 
     return 0;
-}  
+}
