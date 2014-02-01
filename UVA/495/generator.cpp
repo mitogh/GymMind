@@ -1,8 +1,10 @@
-#include <string.h>
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include <math.h>
 
 using namespace std;
+
 string sum(string a, string b){
     int len_a = a.size();
     int len_b = b.size();
@@ -24,8 +26,8 @@ string sum(string a, string b){
     tmp[j--] = '\0';
     len_a--;
     len_b--;
-
-    int carry = 0;
+    
+    short carry = 0;
     while(len_a >= 0){
         int sum = 0;
         sum += (int)a[len_a--] - 48;
@@ -44,21 +46,27 @@ string sum(string a, string b){
     else return tmp;
 }
 
-string fibo[5001];
-
 string fib(int n){
-    if(fibo[n].size() > 0) return fibo[n];
-    else {
-        string tmp = sum(fib(n - 1), fib(n - 2));
-        fibo[n] = tmp;
-        return tmp;
+    if(n <= 0){
+        return "0";
     }
+
+    string a = "1";
+    string b = "1";
+
+    int i = 2;
+    for(; i < n; i++){
+        string tmp = a; 
+        a = b; 
+        b = sum(tmp, b);
+    }
+    return b;
 }
 
 int main(){
-    int n;
-    fibo[0] = "0"; fibo[1] = "1";
+    int i, k,n;
 
-    while(scanf("%d", &n) == 1) cout << "The Fibonacci number for " << n << " is " << fib(n) << "\n";
+    for(n = 0; n <= 5000; n++) cout << "fibo[" << n << "] = \"" << fib(n) << "\";" << endl;
+
     return 0;
-}
+}  
