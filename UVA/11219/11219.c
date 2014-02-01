@@ -3,35 +3,23 @@
 int main(){
     int n, i; 
     for(scanf("%d\n", &n), i = 1; n > 0; n--, i++){
-        int currentDay, currentMonth, currentYear; 
-        scanf("%d/%d/%d\n", &currentDay, &currentMonth, &currentYear);
+        int cD, cM, cY; 
+        scanf("%d/%d/%d\n", &cD, &cM, &cY);
 
-        int birthDay, birthMonth, birthYear; 
-        scanf("%d/%d/%d\n", &birthDay, &birthMonth, &birthYear);
+        int bD, bM, bY; 
+        scanf("%d/%d/%d\n", &bD, &bM, &bY);
 
-        int yearAge = currentYear - birthYear;
-        int monthAge = currentMonth - birthMonth; 
-        int dayAge = currentDay - birthDay;
+        int total = (cY - bY);
+        if(cM < bM) total--;
+        if(cM == bM && cD < bD) total--;
 
-        int age = 0;
-
-        if(yearAge >= 0){
-            if(monthAge > 0){
-                age = yearAge;
-            }else if(monthAge == 0 && dayAge >= 0){
-                age = yearAge;
-            }else{
-                age = yearAge - 1;
-            }
-        }
-
-        printf("Case #%d: ", i);
-        if(age < 0){
-            printf("Invalid birth date\n");
-        }else if(age <= 130){
-            printf("%d\n", age);
+        if(total > 130){
+            printf("Case #%d: Check birth date\n", i); 
+        }else if(total >= 0){
+            printf("Case #%d: %d\n", i, total);
         }else{
-            printf("Check birth date\n");
+            printf("Case #%d: Invalid birth date\n", i);
         }
     }
+    return 0;
 }
