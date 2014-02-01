@@ -4,45 +4,22 @@
 
 using namespace std;
 
-string sum(string a, string b){
-    int len_a = a.size();
-    int len_b = b.size();
+string add(string a, string b){
+    int len_a = a.size() - 1;
+    int len_b = b.size() - 1;
 
-    if(!len_a &&  len_b) return b;
-    if(!len_b &&  len_a) return a;
+    string total = "";
 
-    string tmp;
-    if(len_b > len_a){
-        int t = len_a;
-        len_a = len_b;
-        len_b = t;
-        tmp = a;
-        a = b;
-        b = tmp;
+    int sum = 0;
+    while(len_a >= 0 || len_b >= 0){
+        if(len_b >= 0)  sum += (int)b[len_b--] - '0';
+        if(len_a >= 0)  sum += (int)a[len_a--] - '0';
+
+        total.insert(total.begin(), (sum % 10) + '0');
+        sum /= 10;
     }
-    tmp = a;
-    int j = len_a;
-    tmp[j--] = '\0';
-    len_a--;
-    len_b--;
-    
-    short carry = 0;
-    while(len_a >= 0){
-        int sum = 0;
-        sum += (int)a[len_a--] - 48;
-        if(len_b >= 0) sum += (int)b[len_b--] - 48;
-
-        sum += carry;
-        if(sum < 10){
-            tmp[j--] = sum + 48;
-            carry = 0;
-        }else{ 
-            tmp[j--] = (sum - 10) + 48;
-            carry = 1;
-        }
-    }
-    if(carry) return (char)(carry + 48) + tmp;
-    else return tmp;
+    if(sum) total.insert(total.begin(), sum + '0');
+    return total;
 }
 
 int main(){
@@ -60,5 +37,11 @@ int main(){
      * 1 -> succes
      * 0 -> failure not are the same the sum(a,b) with c
      */
-    cout << (sum(a, b).compare(c) == 0);
+    cout << (add(a, b).compare(c) == 0);
+    cout << (add("0", "0").compare("0") == 0);
+    cout << (add("789", "978945645").compare("978946434") == 0);
+    cout << (add("1000000000000000000000000000000", "1").compare("1000000000000000000000000000001") == 0);
+    cout << (add("99999999999", "1").compare("100000000000") == 0);
+    cout << (add("9", "9").compare("18") == 0);
+    cout << (add("1", "1").compare("2") == 0);
 }
