@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-    char string[133];
+    char string[140];
     int c = 0;
 
     while(fgets(string, sizeof(string), stdin) != NULL){
@@ -10,6 +10,7 @@ int main(){
         while(string[i] != '\0'){
             if(string[i] >= '0' && string[i] <= '9') r += string[i] - '0';
             else if(string[i] == ' ') printf(" ");
+            else if(string[i] == '!') printf("\n");
             else{
                 while(r > 0){
                     if(string[i] == 'b') printf(" ");
@@ -17,7 +18,6 @@ int main(){
                     r--;
                 }
             }
-            if(string[i] == '!') printf("\n");
             i++;
         }
         printf("\n");
