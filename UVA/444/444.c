@@ -2,7 +2,7 @@
 #include <string.h>
 
 int main(){
-    char line[100];
+    char line[1024];
     int i, count, change, flag;
     while(fgets(line, sizeof(line), stdin) != NULL){
         i = strlen(line) - 1;
