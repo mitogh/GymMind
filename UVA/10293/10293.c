@@ -25,14 +25,12 @@ int main(){
                 else if(line[i] == '\n'){
                     if(f && line[i - 1] == '-') f = 0;
                     else{
-                        //printf("%d ", w);
                         words[w]++;
                         f = 0;
                         w = 0;
                     }
                 }else{
                     if(f) f = 0;
-                    //printf("%d ", w);
                     words[w]++;
                     w = 0;
                 }
