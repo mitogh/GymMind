@@ -16,7 +16,7 @@ string add(string a, string b){
     int len_a = a.size() - 1;
     int len_b = b.size() - 1;
 
-    string total = "0";
+    string total = "";
 
     int sum = 0;
     while(len_a >= 0 || len_b >= 0 || sum){
@@ -25,13 +25,23 @@ string add(string a, string b){
         total.insert(total.begin(), (sum % 10) + '0');
         sum /= 10;
     }
-    return total;
+    sum = 0;
+    int flag = 1;
+    while(total[sum] != '\0'){
+        if(total[sum] != '0'){
+            flag = 0;
+            break;
+        }
+        sum++;
+    }
+    if(flag) return "0";
+    else return total;
 }
 
 string product(string a, string b){
     int len_a = a.size() - 1;
     int len_b = b.size() - 1;
-    string total = "0";
+    string total = "";
     string tmp;
     int tmp_s;
     if(len_a < len_b){
@@ -77,7 +87,7 @@ string product(string a, string b){
 int main(){
     string a, b;
     while(getline(cin, a) && getline(cin, b)){
-        cout << product(a,b) << endl;
+        cout << product(a, b) << endl;
     }
     return 0;
 }
