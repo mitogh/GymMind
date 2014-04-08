@@ -34,8 +34,8 @@ Sample Output
 ```
 nice
 not nice
-``
----
+```
 
+---
 *Darko Aleksic*  
 ACPC 2012
