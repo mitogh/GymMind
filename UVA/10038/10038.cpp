@@ -43,7 +43,7 @@ int main(){
                 break;
             }
         }
-        (flag) ? printf("Jolly\n") : printf("Not Jolly\n");
+        (flag) ? printf("Jolly\n") : printf("Not jolly\n");
     }
     return 0;
 }
