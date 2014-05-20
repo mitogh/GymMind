@@ -5,7 +5,7 @@
 using namespace std;
 
 int valid(char c){
-    return ( (c >= '0' && c <= '9') || c == 'e' || c == 'E' || c == '+' || c == '-');
+    return ( (c >= '0' && c <= '9') || c == 'e' || c == 'E' || c == '+' || c == '-' || c == '.');
 }
 
 int start(string expression){
@@ -30,65 +30,75 @@ int end(string expression){
     }
     return -1;
 }
-
 int is_digit(char c){
     return (c >= '0' && c <= '9');
 }
-
-int valid(string expression){
-    int i = start(expression);
-    int j = end(expression);
-    int dot_flag = 0;
-    int dot_pos = -1, e_pos;
-    int valid = 1;
-
-    while(i <= j){
-        cout << expression[i];
-        switch(expression[i]){
-            case ' ':
-                return 0;
-                break;
-
-            case '.':
-                dot_flag = 1;
-                dot_pos = i;
-                break;
-            case 'E':
-            case 'e':
-                dot_flag = 1;
-                e_pos = i;
-                break;
+int contains_e_or_dot(string expression){
+    int i, j;
+    for(i = start(expression), j = end(expression); i <= j; i++){
+        if(expression[i] == '.' || expression[i] == 'e' || expression[i] == 'E'){
+            return 1;
         }
-        i++;
     }
-    cout << "====> ";
-    if(!dot_flag){
+    return 0;
+}
+int check(string expression){
+    int i, j;
+    for(i = start(expression), j = end(expression); i <= j; i++){
+        if(expression[i] == ' '){
+            return 0;
+        }else if(expression[i] == '.' || expression[i] == 'e' || expression[i] == 'E'){
+            if(i == 0){
+                return 0;
+            }else if(!is_digit(expression[i - 1])){
+                return 0;
+            }else if(i + 1 > j){
+                return 0;
+            }else if(expression[i] == '.' && !is_digit(expression[i + 1])){
+                return 0;
+            }else if(!(is_digit(expression[i + 1]) || expression[i + 1] == '-' || expression[i + 1] == '+') ){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+int valid_dot(string expression){
+    int i, j;
+    int flag = 0;
+    for(i = start(expression), j = end(expression); i <= j; i++){
+        if(!flag && (expression[i] == 'e' || expression[i] == 'E')) flag = 1;
+        if(flag && expression[i] == '.'){
+            return 0;
+        }
+    }
+    return 1;
+}
+int valid(string expression){
+    if( contains_e_or_dot(expression)   &&
+        valid_dot(expression)           &&
+        check(expression)
+            ){
+        return 1;
+    }else{
         return 0;
     }
-    
-    if(dot_pos > 0){
-        if(!(
-                (expression[dot_pos - 1] >= '0' && expression[dot_pos - 1] <= '9') && 
-                (expression[dot_pos + 1] >= '0' && expression[dot_pos + 1] <= '9')
-            )
-        ){
-            return 0;
-        }
-    }
-    if(e_pos > 0){
-        if(!(expression[e_pos - 1] >= '0' && expression[e_pos - 1] <= '9')){
-            return 0;
-        }
-    }
-
-    return 1;
 }
 
 int main(){
     string expression;
     while(getline(cin, expression)){
         if(expression == "*") break;
-        cout << valid(expression) << endl;
+        int i, j;
+        for(i = start(expression), j = end(expression); i <= j; i++){
+            printf("%c", expression[i]);
+        }
+        if(valid(expression)){
+            cout << " is legal." << endl;
+        }else{
+            cout << " is illegal." << endl;
+        }
+       
     }
     return 0;
 }
