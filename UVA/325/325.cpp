@@ -98,7 +98,6 @@ int main(){
         }else{
             cout << " is illegal." << endl;
         }
-       
     }
     return 0;
 }
