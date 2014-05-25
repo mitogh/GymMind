@@ -30,6 +30,27 @@ int end(string expression){
     }
     return -1;
 }
+int real_start(string expression){
+    int len = expression.size(), i = 0;
+    while(i < len){
+        if(expression[i] != ' '){
+            return i;
+        }
+        i++;
+    }
+    return 0;
+}
+int real_end(string expression){
+    int len = expression.size() - 1;
+    int j = len;
+    while(len > 0){
+        if(expression[len] != ' '){
+            return len;
+        }
+        len--;
+    }
+    return j;
+}
 int is_digit(char c){
     return (c >= '0' && c <= '9');
 }
@@ -90,7 +111,7 @@ int main(){
     while(getline(cin, expression)){
         if(expression == "*") break;
         int i, j;
-        for(i = start(expression), j = end(expression); i <= j; i++){
+        for(i = real_start(expression), j = real_end(expression); i <= j; i++){
             printf("%c", expression[i]);
         }
         if(valid(expression)){

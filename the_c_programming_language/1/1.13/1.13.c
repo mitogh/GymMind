@@ -19,6 +19,11 @@ int main(){
     for(j = count; j > 0; j--){
         printf("[=]");
     }
-    printf(" %d words\n", count);
+    printf(" %d ", count);
+    if(count == 1){
+        printf("%s\n", "word");
+    }else{
+        printf("%s\n", "words");
+    }
     return 0;
 }
