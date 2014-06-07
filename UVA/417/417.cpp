@@ -1,51 +1,78 @@
 #include <stdio.h>
 #include <iostream>
 #include <map>
-
+#define L 26
+#define a 'a'
 using namespace std;
+map<string, int>values;
 
-int length(string line){
-    int i = 0, count = 0;
-    while(line[i++] != '\0')  count++;
-    return count;
-}
-int valid(string line){
-    int i = length(line), j = 0, valid = 1;
-    char prev;
-    while(j < i){
-        if(j > 0){
-            if(prev >= line[j]){
-                valid = 0;
-                break;
-            }else{
-                prev = line[j];
-            }
-        }else{
-            prev = line[j];
-        }
-        j++;
+void fill(){
+    int v = 1;
+    string key;
+    for(int i = 0; i < L; i++, v++){
+        key.insert(0, 1, a + i);
+        values[key] = v;
+        key = "";
     }
-    return valid;
+    for(int i = 0; i < L; i++){
+        for(int j = i + 1; j < L; j++, v++){
+            key.insert(0, 1, a + i);
+            key.insert(1, 1, a + j);
+            values[key] = v;
+            key = "";
+        }
+    }
+    for(int i = 0; i < L; i++){
+        for(int j = i + 1; j < L; j++){
+            for(int h = j + 1; h < L; h++, v++){
+                key.insert(0, 1, a + i);
+                key.insert(1, 1, a + j);
+                key.insert(2, 1, a + h);
+                values[key] = v;
+                key = "";
+            }
+        }
+    }
+    for(int i = 0; i < L; i++){
+        for(int j = i + 1; j < L; j++){
+            for(int h = j + 1; h < L; h++){
+                for(int k = h + 1; k < L; k++, v++){
+                    key.insert(0, 1, a + i);
+                    key.insert(1, 1, a + j);
+                    key.insert(2, 1, a + h);
+                    key.insert(3, 1, a + k);
+                    values[key] = v;
+                    key = "";
+                }
+            }
+        }
+    }
+    for(int i = 0; i < L; i++){
+        for(int j = i + 1; j < L; j++){
+            for(int h = j + 1; h < L; h++){
+                for(int k = h + 1; k < L; k++){
+                    for(int l = k + 1; l < L; l++, v++){
+                        key.insert(0, 1, a + i);
+                        key.insert(1, 1, a + j);
+                        key.insert(2, 1, a + h);
+                        key.insert(3, 1, a + k);
+                        key.insert(4, 1, a + l);
+                        values[key] = v;
+                        key = "";
+                    }
+                }
+            }
+        }
+    }
 }
-
 int main(){
     string line;
-    map<string, int>values;
-    char number[6] = "a";
-    
-    int j = 0;
-    int r = 0;
-    int l = 'a';
-    
-    int t = 0;
-    for(int i = 0; i < 52; i++){
-        number[r] = l + j;
-        cout << number << endl;
-        if(number[r] == 'z'){
-            l++;
-            j = 0;
+    fill();
+    while(getline(cin, line, '\n')){
+        if(values.find(line) != values.end()){
+            printf("%d\n", values[line]);
         }else{
-            j++;
+            printf("0\n");
         }
     }
     return 0;
