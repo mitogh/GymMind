@@ -1,124 +1,89 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
-
 using namespace std;
-
-int valid(char c){
-    return ( (c >= '0' && c <= '9') || c == 'e' || c == 'E' || c == '+' || c == '-' || c == '.');
+int isBlank(char c){
+    return (c == ' ' || c == '\t' || c == '\r' || c == '\n');
 }
-
-int start(string expression){
-    int len = expression.size();
-    int i = 0;
-
-    while(i < len){
-        if(valid(expression[i])){
-            return i;
-        }
-        i++;
-    }
-    return -1;
+int isPoint(char c){
+    return (c == '.');
 }
-int end(string expression){
-    int len = expression.size() - 1;
-    while(len >= 0){
-        if(valid(expression[len])){
-            return len;
-        }
-        len--;
-    }
-    return -1;
+int isExponent(char c){
+    return (c == 'e' || c == 'E');
 }
-int real_start(string expression){
-    int len = expression.size(), i = 0;
-    while(i < len){
-        if(expression[i] != ' '){
-            return i;
-        }
-        i++;
-    }
-    return 0;
+int isOperator(char c){
+    return (c == '+' || c == '-');
 }
-int real_end(string expression){
-    int len = expression.size() - 1;
-    int j = len;
-    while(len > 0){
-        if(expression[len] != ' '){
-            return len;
-        }
-        len--;
-    }
-    return j;
-}
-int is_digit(char c){
+int isNumber(char c){
     return (c >= '0' && c <= '9');
 }
-int contains_e_or_dot(string expression){
-    int i, j;
-    for(i = start(expression), j = end(expression); i <= j; i++){
-        if(expression[i] == '.' || expression[i] == 'e' || expression[i] == 'E'){
-            return 1;
-        }
-    }
-    return 0;
-}
-int check(string expression){
-    int i, j;
-    for(i = start(expression), j = end(expression); i <= j; i++){
-        if(expression[i] == ' '){
-            return 0;
-        }else if(expression[i] == '.' || expression[i] == 'e' || expression[i] == 'E'){
-            if(i == 0){
-                return 0;
-            }else if(!is_digit(expression[i - 1])){
-                return 0;
-            }else if(i + 1 > j){
-                return 0;
-            }else if(expression[i] == '.' && !is_digit(expression[i + 1])){
-                return 0;
-            }else if(!(is_digit(expression[i + 1]) || expression[i + 1] == '-' || expression[i + 1] == '+') ){
-                return 0;
-            }
-        }
-    }
-    return 1;
-}
-int valid_dot(string expression){
-    int i, j;
-    int flag = 0;
-    for(i = start(expression), j = end(expression); i <= j; i++){
-        if(!flag && (expression[i] == 'e' || expression[i] == 'E')) flag = 1;
-        if(flag && expression[i] == '.'){
-            return 0;
-        }
-    }
-    return 1;
-}
-int valid(string expression){
-    if( contains_e_or_dot(expression)   &&
-        valid_dot(expression)           &&
-        check(expression)
-            ){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
 int main(){
     string expression;
-    while(getline(cin, expression)){
-        if(expression == "*") break;
+    while(getline(cin, expression) && expression != "*"){
+        int start = 0;
         int i, j;
-        for(i = real_start(expression), j = real_end(expression); i <= j; i++){
-            printf("%c", expression[i]);
+        for(i = 0, j = expression.size() - 1; i < j; i++){
+            if(!isBlank(expression[i])){
+                break;
+            }
         }
-        if(valid(expression)){
-            cout << " is legal." << endl;
+
+        int invalid = 0;
+        int has_decimal_or_point = 0;
+        int check_for_fractions = 0;
+        int check_for_spaces = 0;
+        int recheck = 0;
+        for(; i <= j; i++){
+            if(isExponent(expression[i])){
+                has_decimal_or_point = 1;
+                check_for_fractions = 1;
+            }else if(isPoint(expression[i])){
+                if(i == 0 || 
+                    !isNumber(expression[i - 1]) ||
+                    !isNumber(expression[i + 1])
+                  ){
+                    invalid = 1;
+                    break;
+                }else{
+                    recheck = 1;
+                }
+                has_decimal_or_point = 1;
+            }else if(isOperator(expression[i])){
+                if(!isNumber(expression[i + 1]) && !isExponent(expression[i + 1])){
+                    invalid = 1;
+                    break;
+                }else{
+                    recheck = 1;
+                }
+            }else if(isNumber(expression[i])){
+                recheck = 1;
+            }
+            if(recheck && isBlank(expression[i])){
+                check_for_spaces = 1;
+            }
+            if(check_for_spaces && (isNumber(expression[i])    ||
+                                    isExponent(expression[i]) ||
+                                    isOperator(expression[i]) ||
+                                    isPoint(expression[i]))
+            ){
+                    invalid = 1;
+                    break;
+            }
+            if(check_for_fractions && isPoint(expression[i])){
+                invalid = 1;
+                break;
+            }
+        }
+        if(!has_decimal_or_point){
+            invalid = 1;
+        }
+
+        if(invalid){
+            cout << expression << "is legal.\n";
         }else{
-            cout << " is illegal." << endl;
+            cout << expression << "is illegal.\n";
         }
+        cout << invalid << endl;
     }
     return 0;
 }
