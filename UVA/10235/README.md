@@ -31,7 +31,7 @@ For each N given in the input, output should contain one of the following:
 ##Sample Output
 
 ```
- 17 is emirp.
+17 is emirp.
 18 is not prime.
 19 is prime.
 179 is emirp.
